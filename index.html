@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours d'anglais | Teacher Narjis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0e1027;
+            --secondary: #f47c00;
+            --accent: #f37221;
+            --light: #ffe2d2;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --dark: #333333;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Fira Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            position: relative;
+            width: 120px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            margin-left: 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-contact {
+            color: #28a745 !important;
+        }
+
+        .nav-signup {
+            color: var(--accent) !important;
+        }
+
+        .language-toggle {
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .lang-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-fr {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .lang-ar {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding-top: 25vh;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero-subheadline {
+            font-size: 20px;
+            color: #f35000;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-subheadline i {
+            margin-right: 10px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-text {
+            max-width: 70%;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        .goals {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .goal-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--gray);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .goal-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .goal-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 28px;
+        }
+
+        .goal-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--gray);
+        }
+
+        .services .section-title {
+            color: var(--secondary);
+        }
+
+        .services-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+            font-size: 18px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 48px;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-price {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--secondary);
+            margin-top: 15px;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .courses-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .course-video {
+            width: 350px;
+            height: 250px;
+            background: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 48px;
+            position: relative;
+        }
+
+        .play-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Signup Section */
+        .signup {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .signup-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .signup-subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .signup-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: "▼";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #777;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-title {
+            font-size: 48px;
+            color: var(--primary);
+            text-align: center;
+            line-height: 1.3;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .contact-subtitle {
+            font-size: 24px;
+            color: #f35000;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--light);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .about-text {
+                max-width: 85%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background: var(--white);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+            }
+            
+            .nav-active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+                max-width: 100%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                max-width: 100%;
+            }
+            
+            .contact-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .contact-title {
+                font-size: 28px;
+            }
+            
+            .contact-subtitle {
+                font-size: 20px;
+            }
+            
+            .signup-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">NARJIS LOGO</div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="https://youtube.com" target="_blank">BLOG</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="https://wa.me/" target="_blank" class="nav-contact">CONTACT</a></li>
+                <li><a href="#signup" class="nav-signup">S'INSCRIRE</a></li>
+            </ul>
+            <div class="language-toggle">
+                <div class="lang-btn lang-fr">FR</div>
+                <div class="lang-btn lang-ar">AR</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Cours d'englais</h1>
+            <p class="hero-subtitle">En ligne et en direct</p>
+            <p class="hero-subheadline"><i class="fas fa-info-circle"></i>En petits groupes ou cours particuliers.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">NOS COURS</a>
+                <a href="#signup" class="btn btn-secondary">S'INSCRIRE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de Teacher Narjis</h2>
+            <div class="about-content">
+                <p class="about-text">Passionnée par l'enseignement de l'anglais, je me consacre à aider mes étudiants à atteindre leurs objectifs linguistiques. Avec des années d'expérience et une approche pédagogique innovante, je crée un environnement d'apprentissage stimulant et adapté à chacun.</p>
+                <div class="goals">
+                    <div class="goal-item">
+                        <div class="goal-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="goal-title">Pédagogie innovante</h3>
+                        <p>Méthodes d'enseignement modernes adaptées à tous les niveaux.</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="goal-title">Apprentissage personnalisé</h3>
+                        <p>Programmes sur mesure pour répondre à vos besoins spécifiques.</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="goal-title">Progrès garantis</h3>
+                        <p>Suivi régulier et évaluations pour mesurer votre progression.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services et tarifs</h2>
+            <p class="services-subtitle">Choisissez le plan parfait pour atteindre vos objectifs en anglais.</p>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Cours en groupe</h3>
+                        <p>Apprentissage collaboratif en petits groupes de 4-6 personnes. Sessions interactives et dynamiques.</p>
+                        <p class="service-price">300 MAD/mois</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Cours particuliers</h3>
+                        <p>Programme personnalisé selon vos besoins et votre rythme d'apprentissage.</p>
+                        <p class="service-price">500 MAD/mois</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Anglais professionnel</h3>
+                        <p>Préparation aux entretiens, rédaction professionnelle et communication en milieu de travail.</p>
+                        <p class="service-price">600 MAD/mois</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Préparation aux examens</h3>
+                        <p>TOEFL, IELTS, TOEIC - Stratégies et entraînements intensifs pour réussir.</p>
+                        <p class="service-price">700 MAD/mois</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Conversation</h3>
+                        <p>Ateliers de conversation pour améliorer votre fluidité et votre confiance à l'oral.</p>
+                        <p class="service-price">250 MAD/mois</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Cours pour enfants</h3>
+                        <p>Méthodes ludiques et adaptées aux enfants de 6 à 12 ans.</p>
+                        <p class="service-price">350 MAD/mois</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Exemples de cours</h2>
+            <div class="courses-container">
+                <div class="course-video">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="course-video">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="course-video">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section id="signup" class="signup">
+        <div class="container">
+            <h2 class="section-title">S'INSCRIRE</h2>
+            <p class="signup-subtitle">En quelques étapes simples, rejoignez une communauté où votre identité est célébrée, vos objectifs sont prioritaires et votre parcours en anglais est conçu spécialement pour vous.</p>
+            <div class="signup-container">
+                <form class="signup-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="fullname">Nom Complet</label>
+                        <input type="text" id="fullname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-type">Type de Cours</label>
+                        <div class="select-wrapper">
+                            <select id="course-type" class="form-control" required>
+                                <option value="">Sélectionnez un cours</option>
+                                <option value="groupe">Cours en groupe</option>
+                                <option value="particulier">Cours particuliers</option>
+                                <option value="professionnel">Anglais professionnel</option>
+                                <option value="examens">Préparation aux examens</option>
+                                <option value="conversation">Ateliers de conversation</option>
+                                <option value="enfants">Cours pour enfants</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary signup-btn">S'INSCRIRE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container contact-container">
+            <h2 class="contact-title">Vous avez des<br>questions?</h2>
+            <p class="contact-subtitle">Tendez la main.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+212 6 12 34 56 78</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@teachernarjis.com</span>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4 class="footer-title">Teacher Narjis</h4>
+                    <p>Des cours d'anglais de qualité, adaptés à vos besoins et à votre rythme.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#courses">Cours</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Cours en groupe</a></li>
+                        <li><a href="#">Cours particuliers</a></li>
+                        <li><a href="#">Anglais professionnel</a></li>
+                        <li><a href="#">Préparation aux examens</a></li>
+                        <li><a href="#">Cours pour enfants</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +212 6 12 34 56 78</li>
+                        <li><i class="fas fa-envelope"></i> contact@teachernarjis.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Teacher Narjis. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('nav-active');
+                }
+            });
+        });
+        
+        // Form Submission
+        const signupForm = document.getElementById('signup-form');
+        
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form validation
+            const fullname = document.getElementById('fullname').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const courseType = document.getElementById('course-type').value;
+            
+            if(!fullname || !phone || !email || !courseType) {
+                alert('Veuillez remplir tous les champs du formulaire');
+                return;
+            }
+            
+            // In a real implementation, this would submit to Google Sheets
+            // For demo purposes, we'll just show a success message
+            alert('Inscription réussie ! Nous vous contacterons bientôt.');
+            signupForm.reset();
+        });
+        
+        // Language Toggle Functionality
+        document.querySelector('.lang-ar').addEventListener('click', () => {
+            alert('Passage à la version arabe du site. Dans une implémentation réelle, cela chargerait la version arabe.');
+            // In a real implementation, this would redirect to index-ar.html
+        });
+    </script>
+</body>
+</html>
