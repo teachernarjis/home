@@ -6,6 +6,7 @@
     <title>Cours d'anglais | Teacher Narjis</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         :root {
             --primary: #0e1027;
@@ -59,8 +60,9 @@
         }
 
         .btn-primary {
-            background: var(--secondary);
-            color: var(--white);
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
         }
 
         .btn-secondary {
@@ -103,6 +105,11 @@
             color: var(--white);
             font-weight: 700;
             margin-left: 5%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
         }
 
         .nav-links {
@@ -182,26 +189,26 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            padding-top: 25vh;
+            padding-top: 20vh;
         }
 
         .hero-title {
             font-size: 56px;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             max-width: 80%;
         }
 
         .hero-subtitle {
             font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 30px;
+            color: #f35000;
+            margin-bottom: 15px;
             font-weight: 400;
         }
 
         .hero-subheadline {
             font-size: 20px;
-            color: #f35000;
+            color: var(--primary);
             margin-bottom: 40px;
             display: flex;
             align-items: center;
@@ -229,58 +236,52 @@
             color: var(--primary);
         }
 
-        .about-content {
+        .about-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 50px;
         }
 
         .about-text {
-            max-width: 70%;
-            text-align: center;
-            margin-bottom: 50px;
+            width: 70%;
             font-size: 18px;
+            padding-right: 30px;
         }
 
         .goals {
+            width: 30%;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            width: 100%;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .goal-item {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            text-align: center;
-            padding: 30px 20px;
             background: var(--gray);
             border-radius: 10px;
+            padding: 25px;
             transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .goal-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .goal-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: var(--secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin-bottom: 20px;
             color: var(--white);
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .goal-title {
-            font-size: 22px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: 10px;
             color: var(--primary);
         }
 
@@ -392,12 +393,20 @@
         }
 
         .signup-container {
-            max-width: 600px;
-            margin: 0 auto;
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .signup-info {
+            width: 50%;
+        }
+
+        .signup-form-container {
+            width: 50%;
         }
 
         .signup-subtitle {
-            text-align: center;
             margin-bottom: 40px;
             font-size: 18px;
         }
@@ -463,16 +472,18 @@
 
         .contact-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .contact-content {
+            width: 50%;
         }
 
         .contact-title {
             font-size: 48px;
             color: var(--primary);
-            text-align: center;
+            text-align: right;
             line-height: 1.3;
-            max-width: 600px;
             margin-bottom: 30px;
         }
 
@@ -480,13 +491,13 @@
             font-size: 24px;
             color: #f35000;
             margin-bottom: 60px;
-            text-align: center;
+            text-align: right;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-end;
             gap: 20px;
             margin-bottom: 50px;
         }
@@ -501,6 +512,7 @@
         .social-icons {
             display: flex;
             gap: 20px;
+            justify-content: flex-end;
         }
 
         .social-icon {
@@ -581,8 +593,24 @@
                 font-size: 48px;
             }
             
-            .about-text {
-                max-width: 85%;
+            .about-container, .signup-container {
+                flex-direction: column;
+            }
+            
+            .about-text, .goals, .signup-info, .signup-form-container, .contact-content {
+                width: 100%;
+            }
+            
+            .contact-container {
+                justify-content: center;
+            }
+            
+            .contact-title, .contact-subtitle, .contact-info {
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
             }
         }
 
@@ -622,8 +650,8 @@
                 flex-direction: column;
             }
             
-            .about-text {
-                max-width: 100%;
+            .section-title {
+                font-size: 36px;
             }
             
             .contact-title {
@@ -637,7 +665,7 @@
             }
             
             .section-title {
-                font-size: 36px;
+                font-size: 30px;
             }
             
             .contact-title {
@@ -662,17 +690,19 @@
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
-            <ul class="nav-links">
-                <li><a href="#hero">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="https://youtube.com" target="_blank">BLOG</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="https://wa.me/" target="_blank" class="nav-contact">CONTACT</a></li>
-                <li><a href="#signup" class="nav-signup">S'INSCRIRE</a></li>
-            </ul>
-            <div class="language-toggle">
-                <div class="lang-btn lang-fr">FR</div>
-                <div class="lang-btn lang-ar">AR</div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#hero">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="https://youtube.com" target="_blank">BLOG</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="https://wa.me/" target="_blank" class="nav-contact">CONTACT</a></li>
+                    <li><a href="#signup" class="nav-signup">S'INSCRIRE</a></li>
+                </ul>
+                <div class="language-toggle">
+                    <div class="lang-btn lang-fr">FR</div>
+                    <div class="lang-btn lang-ar">AR</div>
+                </div>
             </div>
         </div>
     </header>
@@ -680,7 +710,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="container hero-content">
-            <h1 class="hero-title">Cours d'englais</h1>
+            <h1 class="hero-title">Cours d'anglais</h1>
             <p class="hero-subtitle">En ligne et en direct</p>
             <p class="hero-subheadline"><i class="fas fa-info-circle"></i>En petits groupes ou cours particuliers.</p>
             <div class="hero-buttons">
@@ -694,8 +724,12 @@
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">À propos de Teacher Narjis</h2>
-            <div class="about-content">
-                <p class="about-text">Passionnée par l'enseignement de l'anglais, je me consacre à aider mes étudiants à atteindre leurs objectifs linguistiques. Avec des années d'expérience et une approche pédagogique innovante, je crée un environnement d'apprentissage stimulant et adapté à chacun.</p>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>Passionnée par l'enseignement de l'anglais, je me consacre à aider mes étudiants à atteindre leurs objectifs linguistiques. Avec des années d'expérience et une approche pédagogique innovante, je crée un environnement d'apprentissage stimulant et adapté à chacun.</p>
+                    <p>Ma méthodologie repose sur trois piliers fondamentaux : l'immersion linguistique, l'apprentissage personnalisé et la pratique régulière. Je crois fermement que chaque étudiant a un potentiel unique, et mon rôle est de l'aider à le révéler.</p>
+                    <p>Diplômée de l'Université de Cambridge avec une spécialisation en linguistique appliquée, j'ai développé des programmes adaptés à différents niveaux et besoins. Que vous soyez débutant ou avancé, étudiant ou professionnel, je m'engage à vous fournir les outils nécessaires pour réussir.</p>
+                </div>
                 <div class="goals">
                     <div class="goal-item">
                         <div class="goal-icon">
@@ -824,61 +858,92 @@
     <section id="signup" class="signup">
         <div class="container">
             <h2 class="section-title">S'INSCRIRE</h2>
-            <p class="signup-subtitle">En quelques étapes simples, rejoignez une communauté où votre identité est célébrée, vos objectifs sont prioritaires et votre parcours en anglais est conçu spécialement pour vous.</p>
             <div class="signup-container">
-                <form class="signup-form" id="signup-form">
-                    <div class="form-group">
-                        <label for="fullname">Nom Complet</label>
-                        <input type="text" id="fullname" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="course-type">Type de Cours</label>
-                        <div class="select-wrapper">
-                            <select id="course-type" class="form-control" required>
-                                <option value="">Sélectionnez un cours</option>
-                                <option value="groupe">Cours en groupe</option>
-                                <option value="particulier">Cours particuliers</option>
-                                <option value="professionnel">Anglais professionnel</option>
-                                <option value="examens">Préparation aux examens</option>
-                                <option value="conversation">Ateliers de conversation</option>
-                                <option value="enfants">Cours pour enfants</option>
-                            </select>
+                <div class="signup-info">
+                    <p class="signup-subtitle">En quelques étapes simples, rejoignez une communauté où votre identité est célébrée, vos objectifs sont prioritaires et votre parcours en anglais est conçu spécialement pour vous.</p>
+                    <div class="benefits">
+                        <div class="goal-item" style="background: #fff; margin-bottom: 20px;">
+                            <div class="goal-icon" style="background: #28a745;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h3 class="goal-title">Programme personnalisé</h3>
+                            <p>Un parcours d'apprentissage adapté à vos objectifs spécifiques.</p>
+                        </div>
+                        <div class="goal-item" style="background: #fff; margin-bottom: 20px;">
+                            <div class="goal-icon" style="background: #28a745;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h3 class="goal-title">Support continu</h3>
+                            <p>Accès à des ressources supplémentaires et support entre les cours.</p>
+                        </div>
+                        <div class="goal-item" style="background: #fff;">
+                            <div class="goal-icon" style="background: #28a745;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h3 class="goal-title">Flexibilité horaire</h3>
+                            <p>Choisissez les horaires qui correspondent à votre emploi du temps.</p>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-secondary signup-btn">S'INSCRIRE</button>
-                </form>
+                </div>
+                <div class="signup-form-container">
+                    <form class="signup-form" id="signup-form">
+                        <div class="form-group">
+                            <label for="fullname">Nom Complet</label>
+                            <input type="text" id="fullname" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-type">Type de Cours</label>
+                            <div class="select-wrapper">
+                                <select id="course-type" class="form-control" required>
+                                    <option value="">Sélectionnez un cours</option>
+                                    <option value="groupe">Cours en groupe</option>
+                                    <option value="particulier">Cours particuliers</option>
+                                    <option value="professionnel">Anglais professionnel</option>
+                                    <option value="examens">Préparation aux examens</option>
+                                    <option value="conversation">Ateliers de conversation</option>
+                                    <option value="enfants">Cours pour enfants</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary signup-btn">S'INSCRIRE</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container contact-container">
-            <h2 class="contact-title">Vous avez des<br>questions?</h2>
-            <p class="contact-subtitle">Tendez la main.</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+212 6 12 34 56 78</span>
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h2 class="contact-title">Vous avez des<br>questions?</h2>
+                    <p class="contact-subtitle">Tendez la main.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+212 6 12 34 56 78</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@teachernarjis.com</span>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@teachernarjis.com</span>
-                </div>
-            </div>
-            <div class="social-icons">
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </section>
@@ -955,8 +1020,9 @@
             });
         });
         
-        // Form Submission
+        // Form Submission to Google Sheets
         const signupForm = document.getElementById('signup-form');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz1UvYlG8rUZ2C1d3eTb5Y0J6YlR8Qfz3Qe3w1sFd0bXj1c1f7g/exec';
         
         signupForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -972,10 +1038,39 @@
                 return;
             }
             
-            // In a real implementation, this would submit to Google Sheets
-            // For demo purposes, we'll just show a success message
-            alert('Inscription réussie ! Nous vous contacterons bientôt.');
-            signupForm.reset();
+            // Create form data object
+            const formData = new FormData();
+            formData.append('fullname', fullname);
+            formData.append('phone', phone);
+            formData.append('email', email);
+            formData.append('courseType', courseType);
+            
+            // Show loading state
+            const submitBtn = signupForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+            
+            // Send data to Google Sheets
+            fetch(scriptURL, { 
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Inscription réussie ! Nous vous contacterons bientôt.');
+                    signupForm.reset();
+                } else {
+                    throw new Error('Erreur lors de l\'envoi du formulaire');
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Une erreur s\'est produite. Veuillez réessayer plus tard.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'S\'INSCRIRE';
+            });
         });
         
         // Language Toggle Functionality
