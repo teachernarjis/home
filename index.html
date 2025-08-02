@@ -19,7 +19,7 @@
             --dark: #333333;
             --font-heading: 'Poppins', sans-serif;
             --font-body: 'Fira Sans', sans-serif;
-            --section-bg: #feffff;
+            --section-bg: #feffff; /* New section background color */
         }
 
         * {
@@ -78,6 +78,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
+        /* Removed all background images from sections */
+        .hero, .about, .services, .courses, .signup, .contact {
+            background-color: var(--section-bg);
+        }
+
         /* Header Styles */
         header {
             position: fixed;
@@ -97,35 +102,28 @@
         }
 
         .logo {
-            width: 5%;
-            min-width: 100px;
+            position: relative;
+            width: 120px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-left: 5%;
         }
 
         .logo img {
-            height: 40px;
+            height: 100%;
             width: auto;
-        }
-
-        .nav-container {
-            width: 95%;
-            display: flex;
-            justify-content: flex-end;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            width: 100%;
-            justify-content: space-between;
+            margin-right: 5%;
         }
 
         .nav-links li {
-            flex: 1;
-            text-align: center;
-            min-width: 70px;
+            margin: 0 15px;
         }
 
         .nav-links a {
@@ -134,8 +132,6 @@
             font-weight: 500;
             transition: color 0.3s ease;
             font-size: 16px;
-            display: block;
-            padding: 8px 5px;
         }
 
         .nav-links a:hover {
@@ -152,7 +148,7 @@
 
         .language-toggle {
             display: flex;
-            justify-content: center;
+            margin-left: 20px;
         }
 
         .lang-btn {
@@ -162,7 +158,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 5px;
+            margin-left: 10px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -200,29 +196,26 @@
             z-index: 2;
             width: 100%;
             padding-top: 25vh;
-            text-align: center;
         }
 
         .hero-title {
             font-size: 56px;
             color: var(--primary);
-            margin: 0 auto 10px;
-            max-width: 30%;
+            margin-bottom: 10px;
+            max-width: 80%;
         }
 
         .hero-subtitle {
             font-size: 24px;
             color: #f35000;
-            margin: 0 auto 15px;
-            max-width: 25%;
+            margin-bottom: 15px;
+            font-weight: 400;
         }
 
         .hero-subheadline {
             font-size: 20px;
             color: var(--primary);
-            margin: 0 auto 40px;
-            max-width: 20%;
-            text-align: left;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
         }
@@ -235,12 +228,6 @@
         .hero-buttons {
             display: flex;
             gap: 20px;
-            justify-content: center;
-        }
-
-        .hero-buttons .btn {
-            width: 15%;
-            min-width: 150px;
         }
 
         /* About Section */
@@ -251,35 +238,29 @@
         .section-title {
             font-size: 42px;
             text-align: center;
-            margin: 0 auto 60px;
-            max-width: 10%;
+            margin-bottom: 60px;
+            color: var(--primary);
         }
 
         .about-content {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            padding-left: 25%; /* Start from 25% of the screen */
         }
 
         .about-text {
-            text-align: justify;
+            text-align: right;
             margin-bottom: 20px;
             font-size: 18px;
-            max-width: 60%;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .reason-title {
             font-size: 24px;
             font-weight: 700;
-            text-align: left;
-            margin: 0 0 30px;
-            max-width: 25%;
-            background: var(--white);
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: right;
+            margin-bottom: 30px;
+            color: var(--primary);
         }
 
         .goals {
@@ -291,8 +272,8 @@
         }
 
         .goal-item {
-            width: 20%;
-            text-align: left;
+            width: 100%;
+            text-align: right;
             padding: 25px;
             background: var(--white);
             border-radius: 10px;
@@ -315,7 +296,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 20px;
+            margin-left: 20px;
             color: var(--white);
             font-size: 24px;
             flex-shrink: 0;
@@ -338,12 +319,11 @@
 
         .services .section-title {
             color: var(--secondary);
-            max-width: 10%;
         }
 
         .services-subtitle {
             text-align: center;
-            max-width: 5%;
+            max-width: 600px;
             margin: 0 auto 60px;
             font-size: 18px;
         }
@@ -360,7 +340,6 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
-            text-align: center;
         }
 
         .service-card:hover {
@@ -401,10 +380,6 @@
             background: linear-gradient(to bottom, #feffff, #f8f9ff);
         }
 
-        .courses .section-title {
-            max-width: 20%;
-        }
-
         .courses-container {
             display: flex;
             justify-content: center;
@@ -414,8 +389,7 @@
         }
 
         .course-video {
-            width: 30%;
-            min-width: 300px;
+            width: 350px;
             height: 250px;
             background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
             border-radius: 10px;
@@ -462,20 +436,15 @@
             background: linear-gradient(to bottom, #feffff, #fff8f5);
         }
 
-        .signup .section-title {
-            max-width: 20%;
+        .signup-container {
+            max-width: 600px;
+            margin-left: auto;
         }
 
         .signup-subtitle {
-            text-align: justify;
-            margin: 0 auto 40px;
+            text-align: right;
+            margin-bottom: 40px;
             font-size: 18px;
-            max-width: 50%;
-        }
-
-        .signup-container {
-            max-width: 40%;
-            margin: 0 auto;
         }
 
         .signup-form {
@@ -487,7 +456,7 @@
 
         .form-group {
             margin-bottom: 25px;
-            text-align: left;
+            text-align: right;
         }
 
         .form-group label {
@@ -527,12 +496,10 @@
         }
 
         .signup-btn {
-            width: 15%;
-            min-width: 120px;
+            width: 100%;
             padding: 15px;
             font-size: 18px;
-            margin: 10px auto 0;
-            display: block;
+            margin-top: 10px;
             background: linear-gradient(to right, #f47c00, #f37221);
             border: none;
         }
@@ -547,32 +514,34 @@
             background: linear-gradient(to bottom, #feffff, #f0f9ff);
         }
 
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
         .contact-title {
             font-size: 48px;
             color: var(--primary);
-            text-align: center;
+            text-align: right;
             line-height: 1.3;
-            max-width: 25%;
-            margin: 0 auto 30px;
+            max-width: 600px;
+            margin-bottom: 30px;
         }
 
         .contact-subtitle {
             font-size: 24px;
             color: #f35000;
             margin-bottom: 60px;
-            text-align: center;
-            max-width: 10%;
-            margin: 0 auto 60px;
+            text-align: right;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-end;
             gap: 20px;
             margin-bottom: 50px;
-            max-width: 15%;
-            margin-left: 0;
         }
 
         .contact-item {
@@ -580,20 +549,17 @@
             align-items: center;
             font-size: 18px;
             gap: 10px;
-            direction: ltr;
+            direction: rtl;
             background: var(--white);
             padding: 15px 25px;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            width: 100%;
         }
 
         .social-icons {
             display: flex;
             gap: 20px;
             justify-content: flex-end;
-            max-width: 15%;
-            margin-left: auto;
         }
 
         .social-icon {
@@ -671,119 +637,19 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero-title {
-                max-width: 40%;
-            }
-            .hero-subtitle {
-                max-width: 35%;
-            }
-            .hero-subheadline {
-                max-width: 30%;
-            }
-            .section-title {
-                max-width: 20%;
-            }
-            .about-text {
-                max-width: 80%;
-            }
-            .reason-title {
-                max-width: 35%;
-            }
-            .goal-item {
-                width: 25%;
-            }
-            .services .section-title {
-                max-width: 20%;
-            }
-            .services-subtitle {
-                max-width: 10%;
-            }
-            .signup .section-title {
-                max-width: 30%;
-            }
-            .signup-subtitle {
-                max-width: 70%;
-            }
-            .signup-container {
-                max-width: 60%;
-            }
-            .contact-title {
-                max-width: 35%;
-            }
-            .contact-subtitle {
-                max-width: 20%;
-            }
-            .contact-info {
-                max-width: 25%;
-            }
-            .social-icons {
-                max-width: 25%;
-            }
-        }
-
         @media (max-width: 992px) {
             .hero-title {
                 font-size: 48px;
-                max-width: 50%;
             }
-            .hero-subtitle {
-                max-width: 45%;
-            }
-            .hero-subheadline {
-                max-width: 40%;
-            }
-            .section-title {
-                font-size: 36px;
-                max-width: 30%;
-            }
-            .reason-title {
-                max-width: 45%;
-            }
-            .goal-item {
-                width: 45%;
-            }
-            .services .section-title {
-                max-width: 30%;
-            }
-            .services-subtitle {
-                max-width: 15%;
-            }
-            .signup .section-title {
-                max-width: 40%;
-            }
-            .signup-subtitle {
-                max-width: 80%;
-            }
-            .signup-container {
-                max-width: 70%;
-            }
-            .contact-title {
-                font-size: 36px;
-                max-width: 45%;
-            }
-            .contact-subtitle {
-                max-width: 25%;
-            }
-            .contact-info {
-                max-width: 35%;
-            }
-            .social-icons {
-                max-width: 35%;
+            
+            .about-content {
+                padding-left: 15%;
             }
         }
 
         @media (max-width: 768px) {
-            .logo {
-                min-width: 80px;
-                width: 10%;
-            }
-            .nav-container {
-                width: 90%;
-            }
             .mobile-toggle {
                 display: block;
-                margin-left: 20px;
             }
             
             .nav-links {
@@ -807,43 +673,23 @@
             
             .nav-links li {
                 margin: 15px 0;
-                width: 100%;
             }
             
             .hero-title {
                 font-size: 40px;
-                max-width: 80%;
-            }
-            
-            .hero-subtitle {
-                max-width: 70%;
-            }
-            
-            .hero-subheadline {
-                max-width: 60%;
+                max-width: 100%;
             }
             
             .hero-buttons {
                 flex-direction: column;
+            }
+            
+            .about-content {
+                padding-left: 0;
                 align-items: center;
             }
             
-            .hero-buttons .btn {
-                width: 50%;
-            }
-            
-            .section-title {
-                font-size: 32px;
-                max-width: 50%;
-            }
-            
-            .about-text {
-                max-width: 90%;
-            }
-            
-            .reason-title {
-                max-width: 80%;
-                margin: 0 auto 30px;
+            .about-text, .reason-title {
                 text-align: center;
             }
             
@@ -852,7 +698,6 @@
             }
             
             .goal-item {
-                width: 80%;
                 flex-direction: column;
                 text-align: center;
             }
@@ -861,68 +706,30 @@
                 margin: 0 auto 15px;
             }
             
-            .services .section-title {
-                max-width: 50%;
-            }
-            
-            .services-subtitle {
-                max-width: 30%;
-            }
-            
-            .courses .section-title {
-                max-width: 50%;
-            }
-            
-            .course-video {
-                width: 80%;
-            }
-            
-            .signup .section-title {
-                max-width: 60%;
-            }
-            
-            .signup-subtitle {
-                max-width: 90%;
+            .contact-title {
+                font-size: 36px;
             }
             
             .signup-container {
-                max-width: 90%;
-            }
-            
-            .signup-btn {
-                width: 50%;
-            }
-            
-            .contact-title {
-                font-size: 32px;
-                max-width: 70%;
-            }
-            
-            .contact-subtitle {
-                max-width: 40%;
-            }
-            
-            .contact-info {
-                max-width: 80%;
-                margin: 0 auto 50px;
-            }
-            
-            .social-icons {
-                max-width: 80%;
                 margin: 0 auto;
-                justify-content: center;
+            }
+            
+            .signup-subtitle {
+                text-align: center;
+            }
+            
+            .form-group {
+                text-align: left;
             }
         }
 
         @media (max-width: 576px) {
             .hero-title {
                 font-size: 32px;
-                max-width: 90%;
             }
             
             .section-title {
-                font-size: 28px;
-                max-width: 70%;
+                font-size: 36px;
             }
             
             .contact-title {
@@ -936,10 +743,6 @@
             .signup-form {
                 padding: 25px;
             }
-            
-            .signup-btn {
-                width: 70%;
-            }
         }
     </style>
 </head>
@@ -950,23 +753,21 @@
             <div class="logo">
                 <div style="width: 120px; height: 40px; background: #0e1027; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">Narjis</div>
             </div>
-            <div class="nav-container">
-                <ul class="nav-links">
-                    <li><a href="#hero">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="https://youtube.com" target="_blank">BLOG</a></li>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="https://wa.me/" target="_blank" class="nav-contact">CONTACT</a></li>
-                    <li><a href="#signup" class="nav-signup">S'INSCRIRE</a></li>
-                    <li class="language-toggle">
-                        <div class="lang-btn lang-fr">FR</div>
-                        <div class="lang-btn lang-ar">AR</div>
-                    </li>
-                </ul>
-                <div class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
             </div>
+            <ul class="nav-links">
+                <li><a href="#hero">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="https://youtube.com" target="_blank">BLOG</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="https://wa.me/" target="_blank" class="nav-contact">CONTACT</a></li>
+                <li><a href="#signup" class="nav-signup">S'INSCRIRE</a></li>
+                <div class="language-toggle">
+                    <div class="lang-btn lang-fr">FR</div>
+                    <div class="lang-btn lang-ar">AR</div>
+                </div>
+            </ul>
         </div>
     </header>
 
@@ -1161,7 +962,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
+        <div class="container contact-container">
             <h2 class="contact-title">Vous avez des<br>questions?</h2>
             <p class="contact-subtitle">Tendez la main.</p>
             <div class="contact-info">
