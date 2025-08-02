@@ -245,7 +245,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            padding-left: 25%; /* Start from 25% of the screen */
+            padding-left: 25%;
         }
 
         .about-text {
@@ -354,8 +354,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 16, 39, 0.3);
         }
 
         .service-content {
@@ -383,11 +403,15 @@
             margin-bottom: 10px;
             font-size: 15px;
             line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
         }
         
         .service-details i {
-            margin-right: 5px;
+            margin-right: 8px;
             color: var(--accent);
+            min-width: 20px;
+            margin-top: 3px;
         }
 
         /* Courses Section */
@@ -852,13 +876,14 @@
             <div class="service-cards">
                 <!-- Kindy Courses -->
                 <div class="service-card">
-                    <div class="service-img" style="background: linear-gradient(135deg, #FFD6BA 0%, #FFB8A1 100%);">
-                        <i class="fas fa-child"></i>
+                    <div class="service-img">
+                        <img src="https://raw.githubusercontent.com/yourusername/yourrepository/main/Kindy%20Courses.jpg" alt="Kindy Courses">
+                        <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Kindy Courses</h3>
                         <div class="service-details">
-                            <i class="fas fa-users"></i> 4-5 enfants par classe
+                            <i class="fas fa-child"></i> 4-5 enfants par classe
                         </div>
                         <div class="service-details">
                             <i class="fas fa-clock"></i> 8 séances d'une heure par mois
@@ -869,8 +894,9 @@
                 
                 <!-- One to one kids -->
                 <div class="service-card">
-                    <div class="service-img" style="background: linear-gradient(135deg, #C2E9FB 0%, #A1C4FD 100%);">
-                        <i class="fas fa-user-graduate"></i>
+                    <div class="service-img">
+                        <img src="https://raw.githubusercontent.com/yourusername/yourrepository/main/One%20to%20one%20Kids.jpg" alt="One to one kids">
+                        <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">One to one kids</h3>
@@ -881,8 +907,9 @@
                 
                 <!-- Teens Courses -->
                 <div class="service-card">
-                    <div class="service-img" style="background: linear-gradient(135deg, #FFE29F 0%, #FFA99F 100%);">
-                        <i class="fas fa-users"></i>
+                    <div class="service-img">
+                        <img src="https://raw.githubusercontent.com/yourusername/yourrepository/main/Teens%20Courses.jpg" alt="Teens Courses">
+                        <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Teens Courses</h3>
@@ -898,8 +925,9 @@
                 
                 <!-- Adults courses -->
                 <div class="service-card">
-                    <div class="service-img" style="background: linear-gradient(135deg, #D4FC79 0%, #96E6A1 100%);">
-                        <i class="fas fa-user-tie"></i>
+                    <div class="service-img">
+                        <img src="https://raw.githubusercontent.com/yourusername/yourrepository/main/Adultes%20Courses.jpg" alt="Adults courses">
+                        <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Adults courses</h3>
@@ -915,8 +943,9 @@
                 
                 <!-- One to one Adultes -->
                 <div class="service-card">
-                    <div class="service-img" style="background: linear-gradient(135deg, #A3BDFF 0%, #7D9FFF 100%);">
-                        <i class="fas fa-user"></i>
+                    <div class="service-img">
+                        <img src="https://raw.githubusercontent.com/yourusername/yourrepository/main/Business%20courses.png" alt="One to one Adultes">
+                        <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">One to one Adultes</h3>
@@ -927,8 +956,9 @@
                 
                 <!-- Communication -->
                 <div class="service-card">
-                    <div class="service-img" style="background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%);">
-                        <i class="fas fa-comments"></i>
+                    <div class="service-img">
+                        <img src="https://raw.githubusercontent.com/yourusername/yourrepository/main/Communication.jpg" alt="Communication">
+                        <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Communication</h3>
