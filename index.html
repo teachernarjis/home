@@ -19,6 +19,7 @@
             --dark: #333333;
             --font-heading: 'Poppins', sans-serif;
             --font-body: 'Fira Sans', sans-serif;
+            --section-bg: #feffff; /* New section background color */
         }
 
         * {
@@ -33,6 +34,7 @@
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
+            background: var(--section-bg);
         }
 
         h1, h2, h3, h4 {
@@ -76,41 +78,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Background Images - FIXED */
-        .hero {
-            background: url('hero background.gif') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .about {
-            background: url('about background.gif') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .services {
-            background: url('Services background.gif') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .courses {
-            background: url('example videos background.gif') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .signup {
-            background: url('sign up background.gif') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .contact {
-            background: url('Contact background.gif') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
+        /* Removed all background images from sections */
+        .hero, .about, .services, .courses, .signup, .contact {
+            background-color: var(--section-bg);
         }
 
         /* Header Styles */
@@ -218,6 +188,7 @@
             padding: 100px 0 80px;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(to bottom, #feffff, #e6f7ff);
         }
 
         .hero-content {
@@ -304,16 +275,17 @@
             width: 100%;
             text-align: right;
             padding: 25px;
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--white);
             border-radius: 10px;
             transition: transform 0.3s ease;
             display: flex;
             align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .goal-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
         .goal-icon {
@@ -363,20 +335,21 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
 
         .service-img {
             height: 200px;
-            background: var(--light);
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -404,6 +377,7 @@
         /* Courses Section */
         .courses {
             padding: 100px 0;
+            background: linear-gradient(to bottom, #feffff, #f8f9ff);
         }
 
         .courses-container {
@@ -417,7 +391,7 @@
         .course-video {
             width: 350px;
             height: 250px;
-            background: var(--light);
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -449,11 +423,17 @@
             justify-content: center;
             cursor: pointer;
             z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .play-icon:hover {
+            transform: scale(1.1);
         }
 
         /* Signup Section */
         .signup {
             padding: 100px 0;
+            background: linear-gradient(to bottom, #feffff, #fff8f5);
         }
 
         .signup-container {
@@ -468,10 +448,10 @@
         }
 
         .signup-form {
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--white);
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .form-group {
@@ -498,6 +478,7 @@
         .form-control:focus {
             border-color: var(--secondary);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(244, 124, 0, 0.2);
         }
 
         .select-wrapper {
@@ -519,11 +500,18 @@
             padding: 15px;
             font-size: 18px;
             margin-top: 10px;
+            background: linear-gradient(to right, #f47c00, #f37221);
+            border: none;
+        }
+
+        .signup-btn:hover {
+            background: linear-gradient(to right, #e06d00, #e3681e);
         }
 
         /* Contact Section */
         .contact {
             padding: 100px 0;
+            background: linear-gradient(to bottom, #feffff, #f0f9ff);
         }
 
         .contact-container {
@@ -562,9 +550,10 @@
             font-size: 18px;
             gap: 10px;
             direction: rtl;
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--white);
             padding: 15px 25px;
             border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .social-icons {
@@ -585,12 +574,14 @@
             font-size: 20px;
             transition: all 0.3s ease;
             text-decoration: none;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
 
         .social-icon:hover {
             background: var(--secondary);
             color: var(--white);
             transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         /* Footer */
@@ -760,7 +751,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="logo header.png" alt="Teacher Narjis Logo">
+                <div style="width: 120px; height: 40px; background: #0e1027; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">Narjis</div>
             </div>
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
@@ -979,6 +970,10 @@
                     <i class="fas fa-phone"></i>
                     <span>+212 702 697 370</span>
                 </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@teachernarjis.com</span>
+                </div>
             </div>
             <div class="social-icons">
                 <a href="https://www.youtube.com/@TeacherNarjis" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
@@ -1145,9 +1140,10 @@
             icon.addEventListener('click', () => {
                 Swal.fire({
                     title: 'Lecture vidéo',
-                    text: 'Lecture d\'un exemple de cours',
-                    icon: 'info',
-                    confirmButtonColor: '#f47c00'
+                    html: '<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/76979871?h=8272103f6e" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>',
+                    showConfirmButton: false,
+                    width: 800,
+                    padding: 0
                 });
             });
         });
