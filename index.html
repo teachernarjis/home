@@ -19,7 +19,7 @@
             --dark: #333333;
             --font-heading: 'Poppins', sans-serif;
             --font-body: 'Fira Sans', sans-serif;
-            --section-bg: #feffff; /* New section background color */
+            --section-bg: #feffff;
         }
 
         * {
@@ -78,7 +78,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Removed all background images from sections */
         .hero, .about, .services, .courses, .signup, .contact {
             background-color: var(--section-bg);
         }
@@ -340,6 +339,9 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .service-card:hover {
@@ -349,16 +351,18 @@
 
         .service-img {
             height: 200px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
+            color: var(--white);
             font-size: 48px;
         }
 
         .service-content {
             padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-title {
@@ -371,7 +375,19 @@
             font-weight: 700;
             font-size: 20px;
             color: var(--secondary);
-            margin-top: 15px;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+        
+        .service-details {
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .service-details i {
+            margin-right: 5px;
+            color: var(--accent);
         }
 
         /* Courses Section */
@@ -743,6 +759,10 @@
             .signup-form {
                 padding: 25px;
             }
+            
+            .service-img {
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -830,64 +850,95 @@
             <h2 class="section-title">Services et tarifs</h2>
             <p class="services-subtitle">Choisissez le plan parfait pour atteindre vos objectifs en anglais.</p>
             <div class="service-cards">
+                <!-- Kindy Courses -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Cours en groupe</h3>
-                        <p>Apprentissage collaboratif en petits groupes de 4-6 personnes. Sessions interactives et dynamiques.</p>
-                        <p class="service-price">300 MAD/mois</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Cours particuliers</h3>
-                        <p>Programme personnalisé selon vos besoins et votre rythme d'apprentissage.</p>
-                        <p class="service-price">500 MAD/mois</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Anglais professionnel</h3>
-                        <p>Préparation aux entretiens, rédaction professionnelle et communication en milieu de travail.</p>
-                        <p class="service-price">600 MAD/mois</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Préparation aux examens</h3>
-                        <p>TOEFL, IELTS, TOEIC - Stratégies et entraînements intensifs pour réussir.</p>
-                        <p class="service-price">700 MAD/mois</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Conversation</h3>
-                        <p>Ateliers de conversation pour améliorer votre fluidité et votre confiance à l'oral.</p>
-                        <p class="service-price">250 MAD/mois</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
+                    <div class="service-img" style="background: linear-gradient(135deg, #FFD6BA 0%, #FFB8A1 100%);">
                         <i class="fas fa-child"></i>
                     </div>
                     <div class="service-content">
-                        <h3 class="service-title">Cours pour enfants</h3>
-                        <p>Méthodes ludiques et adaptées aux enfants de 6 à 12 ans.</p>
-                        <p class="service-price">350 MAD/mois</p>
+                        <h3 class="service-title">Kindy Courses</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 4-5 enfants par classe
+                        </div>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure par mois
+                        </div>
+                        <p class="service-price">250 DH</p>
+                    </div>
+                </div>
+                
+                <!-- One to one kids -->
+                <div class="service-card">
+                    <div class="service-img" style="background: linear-gradient(135deg, #C2E9FB 0%, #A1C4FD 100%);">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">One to one kids</h3>
+                        <p>Programme personnalisé en individuel, adapté au besoins de vos petits. (+9 ans)</p>
+                        <p class="service-price">1500 DH</p>
+                    </div>
+                </div>
+                
+                <!-- Teens Courses -->
+                <div class="service-card">
+                    <div class="service-img" style="background: linear-gradient(135deg, #FFE29F 0%, #FFA99F 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Teens Courses</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 5 élèves par classe
+                        </div>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
+                        </div>
+                        <p class="service-price">300 DH</p>
+                    </div>
+                </div>
+                
+                <!-- Adults courses -->
+                <div class="service-card">
+                    <div class="service-img" style="background: linear-gradient(135deg, #D4FC79 0%, #96E6A1 100%);">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Adults courses</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 5-6 personnes par classe
+                        </div>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
+                        </div>
+                        <p class="service-price">300 DH</p>
+                    </div>
+                </div>
+                
+                <!-- One to one Adultes -->
+                <div class="service-card">
+                    <div class="service-img" style="background: linear-gradient(135deg, #A3BDFF 0%, #7D9FFF 100%);">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">One to one Adultes</h3>
+                        <p>Programme personnalisé en individuel, adapté a vos besoins.</p>
+                        <p class="service-price">1800 DH</p>
+                    </div>
+                </div>
+                
+                <!-- Communication -->
+                <div class="service-card">
+                    <div class="service-img" style="background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%);">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Communication</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 4 personnes par classe
+                        </div>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
+                        </div>
+                        <p class="service-price">350 DH</p>
                     </div>
                 </div>
             </div>
@@ -945,12 +996,12 @@
                         <div class="select-wrapper">
                             <select id="course-type" class="form-control" required>
                                 <option value="">Sélectionnez un cours</option>
-                                <option value="groupe">Cours en groupe</option>
-                                <option value="particulier">Cours particuliers</option>
-                                <option value="professionnel">Anglais professionnel</option>
-                                <option value="examens">Préparation aux examens</option>
-                                <option value="conversation">Ateliers de conversation</option>
-                                <option value="enfants">Cours pour enfants</option>
+                                <option value="kindy">Kindy Courses</option>
+                                <option value="one-to-one-kids">One to one kids</option>
+                                <option value="teens">Teens Courses</option>
+                                <option value="adults">Adults courses</option>
+                                <option value="one-to-one-adultes">One to one Adultes</option>
+                                <option value="communication">Communication</option>
                             </select>
                         </div>
                     </div>
@@ -1004,11 +1055,11 @@
                 <div class="footer-col">
                     <h4 class="footer-title">Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Cours en groupe</a></li>
-                        <li><a href="#">Cours particuliers</a></li>
-                        <li><a href="#">Anglais professionnel</a></li>
-                        <li><a href="#">Préparation aux examens</a></li>
-                        <li><a href="#">Cours pour enfants</a></li>
+                        <li><a href="#">Kindy Courses</a></li>
+                        <li><a href="#">One to one kids</a></li>
+                        <li><a href="#">Teens Courses</a></li>
+                        <li><a href="#">Adults courses</a></li>
+                        <li><a href="#">Communication</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
