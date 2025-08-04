@@ -81,7 +81,6 @@
         .hero, .about, .services, .courses, .signup, .contact {
             position: relative;
             overflow: hidden;
-            /* Adjusted height to match video backgrounds */
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -201,12 +200,12 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
             padding: 0;
         }
 
         .hero-content {
-            padding-top: 25vh;
+            padding-top: 15vh;
+            padding-bottom: 10vh;
         }
 
         .hero-title {
@@ -243,7 +242,6 @@
 
         /* About Section */
         .about {
-            height: 100vh;
             padding: 0;
         }
 
@@ -328,7 +326,6 @@
 
         /* Services Section */
         .services {
-            height: 100vh;
             padding: 0;
         }
 
@@ -366,7 +363,7 @@
         }
 
         .service-img {
-            height: 200px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -410,7 +407,6 @@
 
         /* Courses Section */
         .courses {
-            height: 100vh;
             padding: 0;
         }
 
@@ -466,7 +462,6 @@
 
         /* Signup Section */
         .signup {
-            height: 100vh;
             padding: 0;
         }
 
@@ -545,7 +540,6 @@
 
         /* Contact Section */
         .contact {
-            height: 100vh;
             padding: 0;
         }
 
@@ -681,6 +675,10 @@
             .about-content {
                 padding-left: 15%;
             }
+            
+            .service-img {
+                height: 200px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -758,11 +756,12 @@
                 text-align: left;
             }
             
-            /* Adjust section heights for mobile */
-            .hero, .about, .services, .courses, .signup, .contact {
-                min-height: auto;
-                height: auto;
-                padding: 80px 0;
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .service-img {
+                height: 180px;
             }
         }
 
@@ -772,7 +771,7 @@
             }
             
             .section-title {
-                font-size: 36px;
+                font-size: 32px;
             }
             
             .contact-title {
@@ -791,9 +790,9 @@
                 height: 150px;
             }
             
-            /* Adjust section heights for small mobile */
-            .hero, .about, .services, .courses, .signup, .contact {
-                padding: 60px 0;
+            .course-video {
+                width: 100%;
+                max-width: 350px;
             }
         }
     </style>
