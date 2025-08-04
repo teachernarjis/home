@@ -79,23 +79,7 @@
         }
 
         .hero, .about, .services, .courses, .signup, .contact {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .section-content {
-            position: relative;
-            z-index: 2;
+            background-color: var(--section-bg);
         }
 
         /* Header Styles */
@@ -200,6 +184,9 @@
             display: flex;
             align-items: center;
             padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #feffff, #e6f7ff);
         }
 
         .hero-content {
@@ -409,6 +396,7 @@
         /* Courses Section */
         .courses {
             padding: 100px 0;
+            background: linear-gradient(to bottom, #feffff, #f8f9ff);
         }
 
         .courses-container {
@@ -464,6 +452,7 @@
         /* Signup Section */
         .signup {
             padding: 100px 0;
+            background: linear-gradient(to bottom, #feffff, #fff8f5);
         }
 
         .signup-container {
@@ -542,6 +531,7 @@
         /* Contact Section */
         .contact {
             padding: 100px 0;
+            background: linear-gradient(to bottom, #feffff, #f0f9ff);
         }
 
         .contact-container {
@@ -808,9 +798,6 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-        <video class="section-video" autoplay loop muted playsinline>
-            <source src="Background 1.mp4" type="video/mp4">
-        </video>
         <div class="container hero-content">
             <h1 class="hero-title">COURS<br>D'ANGLAIS</h1>
             <p class="hero-subtitle">En ligne et en direct</p>
@@ -824,10 +811,7 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <video class="section-video" autoplay loop muted playsinline>
-            <source src="Background 2.mp4" type="video/mp4">
-        </video>
-        <div class="container section-content">
+        <div class="container">
             <h2 class="section-title">À propos de Teacher Narjis</h2>
             <div class="about-content">
                 <p class="about-text">Fondé par Narjis, une Marocaine ayant elle-même maîtrisé l’anglais, Teacher Narjis Courses permet aux Marocains ambitieux d’apprendre un anglais pratique et concret. Nous nous concentrons sur le déblocage d’opportunités, le renforcement de la confiance en soi et la création de liens culturels authentiques. Notre approche unique combine des méthodes pédagogiques éprouvées avec une profonde empathie culturelle, guidant les élèves à communiquer avec aisance tout en étant fiers de leur identité marocaine – que ce soit pour les examens, le travail ou la vie quotidienne.</p>
@@ -867,10 +851,7 @@
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <video class="section-video" autoplay loop muted playsinline>
-            <source src="Background 3.mp4" type="video/mp4">
-        </video>
-        <div class="container section-content">
+        <div class="container">
             <h2 class="section-title">Services et tarifs</h2>
             <p class="services-subtitle">Choisissez le plan parfait pour atteindre vos objectifs en anglais.</p>
             <div class="service-cards">
@@ -965,10 +946,7 @@
 
     <!-- Courses Section -->
     <section id="courses" class="courses">
-        <video class="section-video" autoplay loop muted playsinline>
-            <source src="Background 4.mp4" type="video/mp4">
-        </video>
-        <div class="container section-content">
+        <div class="container">
             <h2 class="section-title">Exemples de cours</h2>
             <div class="courses-container">
                 <div class="course-video">
@@ -995,10 +973,7 @@
 
     <!-- Signup Section -->
     <section id="signup" class="signup">
-        <video class="section-video" autoplay loop muted playsinline>
-            <source src="Background 5.mp4" type="video/mp4">
-        </video>
-        <div class="container section-content">
+        <div class="container">
             <h2 class="section-title">S'INSCRIRE</h2>
             <p class="signup-subtitle">En quelques étapes simples, rejoignez une communauté où votre identité est célébrée, vos objectifs sont prioritaires et votre parcours en anglais est conçu spécialement pour vous.</p>
             <div class="signup-container">
@@ -1037,10 +1012,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <video class="section-video" autoplay loop muted playsinline>
-            <source src="Background 6.mp4" type="video/mp4">
-        </video>
-        <div class="container section-content">
+        <div class="container contact-container">
             <h2 class="contact-title">Vous avez<br>des questions?</h2>
             <p class="contact-subtitle">Tendez la main.</p>
             <div class="contact-info">
