@@ -1149,8 +1149,51 @@
         
         // Form Submission to Google Sheets
         const signupForm = document.getElementById('signup-form');
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx2T0s7gVlTk5x2zXr2hXf6LcI8Jk0dD2W6nJm1JzXJz3XbZ3X/exec';
-        
+        const const scriptURL = '1kdxDQP35V5I7nnl3wX_rC4dXM7aH1duw7qwMbCC7FUH51cBjIjW4cLmb';
+
+signupForm.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    const submitBtn = signupForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    
+    // Show loading
+    Swal.fire({
+        title: 'Envoi en cours...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+            Swal.showLoading();
+        }
+    });
+    
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: new FormData(signupForm),
+        mode: 'no-cors'
+    })
+    .then(() => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Inscription réussie !',
+            text: 'Nous vous contacterons bientôt.',
+            confirmButtonColor: '#f47c00'
+        });
+        signupForm.reset();
+    })
+    .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
+            confirmButtonColor: '#f47c00'
+        });
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+    });
+});
         signupForm.addEventListener('submit', e => {
             e.preventDefault();
             
