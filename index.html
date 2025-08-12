@@ -273,7 +273,6 @@
         .about-content {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
             padding-left: 30%;
             margin-left: 10px; /* Added left margin */
         }
@@ -288,15 +287,15 @@
             font-size: 24px;
             font-weight: 700;
             text-align: left;
-            margin-left: 30px;
             margin-bottom: 30px;
             color: var(--primary);
+            width: 100%; /* Ensure full width */
         }
 
         .goals {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: flex-start; /* Align left */
             gap: 20px;
             width: 100%;
         }
@@ -486,8 +485,8 @@
 
         .signup-container {
             max-width: 600px;
-            margin-left: 50%; /* Shift content to the right */
-            transform: translateX(-25%);
+            margin-left: 60%; /* Shift content to the right (60%) */
+            transform: translateX(-30%); /* Adjust for centering */
         }
 
         .signup-subtitle {
@@ -567,7 +566,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            margin-left: 50%; /* Shift content to the right */
+            margin-left: 60%; /* Shift content to the right (60%) */
             width: 100%;
         }
 
@@ -1177,7 +1176,7 @@
         
         // Form Submission to Google Sheets
         const signupForm = document.getElementById('signup-form');
-        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // Replace with your actual Google Script URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwVd4iSxJ8J6qFqj0N_9Cj8a9Jz5q8v4c6q9c4g4HqJ5fUj5hV1/exec'; // Replace with your actual Google Script URL
         
         signupForm.addEventListener('submit', e => {
             e.preventDefault();
