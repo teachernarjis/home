@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours d'anglais | Teacher Narjis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :root {
@@ -14,10 +15,11 @@
             --accent: #f37221;
             --light: #ffe2d2;
             --white: #ffffff;
-            --light-bg: #feffff;
+            --gray: #f5f5f5;
             --dark: #333333;
             --font-heading: 'Poppins', sans-serif;
-            --font-body: 'Open Sans', sans-serif;
+            --font-body: 'Fira Sans', sans-serif;
+            --section-bg: #feffff; /* Requested background color */
         }
 
         * {
@@ -30,22 +32,33 @@
             font-family: var(--font-body);
             font-size: 16px;
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.5; /* Reduced line spacing */
             overflow-x: hidden;
-            background: var(--light-bg);
+            background: var(--section-bg);
         }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            line-height: 1.2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            animation: fadeIn 0.8s ease-out;
+        h1, h2, h3, h4, h5, h6, p, li, a, span, label {
+            /* Text shadows for all text elements */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1), 
+                         0 0 1px rgba(0,0,0,0.15);
+            
+            /* Animation for all text */
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shadowPulse {
+            0% { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+            50% { text-shadow: 2px 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(0,0,0,0.15); }
+            100% { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        }
+
+        .animated-shadow {
+            animation: shadowPulse 3s infinite ease-in-out;
         }
 
         .container {
@@ -65,7 +78,7 @@
             transition: all 0.3s ease;
             text-align: center;
             border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-shadow: none;
         }
 
         .btn-primary {
@@ -81,7 +94,18 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Updated section styling - removed video backgrounds */
+        .hero, .about, .services, .courses, .signup, .contact {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+            background-color: var(--section-bg); /* Set background color */
         }
 
         /* Header Styles */
@@ -91,7 +115,7 @@
             left: 0;
             width: 100%;
             background: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
             padding: 15px 0;
         }
@@ -132,7 +156,6 @@
             font-weight: 500;
             transition: color 0.3s ease;
             font-size: 16px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .nav-links a:hover {
@@ -163,7 +186,6 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .lang-fr {
@@ -180,72 +202,52 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
-            color: var(--primary);
         }
 
-        /* Section Styling */
-        .section {
-            position: relative;
-            overflow: hidden;
+        /* Hero Section Adjustments */
+        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 100px 0;
-            background: var(--light-bg);
+            padding: 100px 0 80px;
         }
 
-        .section-content {
+        .hero-content {
             position: relative;
             z-index: 2;
             width: 100%;
         }
 
-        .section-title {
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--accent);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(254, 255, 255, 0.95) 0%, rgba(254, 255, 255, 0.98) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23feffff"/><path d="M0 50 Q 25 30, 50 50 T 100 50" fill="none" stroke="%23f47c00" stroke-width="0.5" opacity="0.1"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            margin-left: 50%;
-            transform: translateX(-50px);
-        }
-
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 56px;
             color: var(--primary);
-            margin-bottom: 15px;
-            line-height: 1.1;
-            animation-delay: 0.1s;
+            margin-top: 20px; /* Added margin-top */
+            margin-bottom: 10px;
+            max-width: 80%;
+            line-height: 1.1; /* Reduced line spacing */
         }
 
         .hero-subtitle {
-            font-size: 1.8rem;
+            font-size: 24px;
             color: #f35000;
-            margin-bottom: 20px;
+            margin-top: 20px; /* Added margin-top */
+            margin-bottom: 15px;
             font-weight: 400;
-            animation-delay: 0.2s;
+            line-height: 1.2; /* Reduced line spacing */
         }
 
         .hero-subheadline {
-            font-size: 1.2rem;
+            font-size: 20px;
             color: #0e1027;
+            margin-top: 20px; /* Added margin-top */
             margin-bottom: 40px;
             display: flex;
             align-items: center;
-            animation-delay: 0.3s;
+            line-height: 1.3; /* Reduced line spacing */
         }
 
         .hero-subheadline i {
+            margin-top: 20px; /* Added margin-top */
             margin-right: 10px;
             color: #f35000;
         }
@@ -253,102 +255,121 @@
         .hero-buttons {
             display: flex;
             gap: 20px;
-            animation-delay: 0.4s;
+            margin-top: 20px; /* Added margin-top */
         }
 
-        /* About Section */
+        /* About Section Adjustments */
         .about {
-            background: var(--light-bg);
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #f35000;
         }
 
         .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding-left: 30%;
+            margin-left: 10px; /* Added left margin */
         }
 
         .about-text {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
 
         .reason-title {
-            font-size: 1.8rem;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 40px;
+            text-align: left;
+            margin-bottom: 30px;
             color: var(--primary);
+            width: 100%; /* Ensure full width */
         }
 
         .goals {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+            justify-content: flex-start; /* Align left */
+            gap: 20px;
+            width: 100%;
         }
 
         .goal-item {
             width: 100%;
-            max-width: 350px;
-            text-align: center;
-            padding: 30px;
+            text-align: left;
+            padding: 25px;
             background: var(--white);
-            border-radius: 15px;
+            border-radius: 10px;
             transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .goal-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
         .goal-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: var(--secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin-right: 20px;
+            margin-left: 0;
             color: var(--white);
-            font-size: 28px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .goal-content {
+            flex-grow: 1;
+            text-align: left;
         }
 
         .goal-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 22px;
+            margin-bottom: 10px;
             color: var(--primary);
         }
 
         /* Services Section */
         .services {
-            background: var(--light-bg);
+            padding: 100px 0;
+        }
+
+        .services .section-title {
+            color: var(--secondary);
         }
 
         .services-subtitle {
             text-align: center;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 60px;
-            font-size: 1.1rem;
-            color: var(--dark);
+            font-size: 18px;
         }
 
         .service-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .service-card {
             background: var(--white);
-            border-radius: 15px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -357,21 +378,20 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
 
         .service-img {
             height: 200px;
-            background: var(--light);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
-            font-size: 3rem;
+            background-size: cover;
+            background-position: center;
         }
 
         .service-content {
-            padding: 30px;
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -379,54 +399,107 @@
         }
 
         .service-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 15px;
             color: var(--primary);
         }
 
         .service-price {
             font-weight: 700;
-            font-size: 1.6rem;
+            font-size: 20px;
             color: var(--secondary);
             margin-top: auto;
-            padding-top: 20px;
+            padding-top: 15px;
         }
         
         .service-details {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.5;
+            text-align: center;
         }
         
         .service-details i {
-            margin-right: 8px;
+            margin-right: 5px;
             color: var(--accent);
         }
 
-        /* Signup Section */
+        /* Courses Section */
+        .courses {
+            padding: 100px 0;
+        }
+
+        .courses-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .course-video {
+            width: 350px;
+            height: 250px;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-video::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(243, 114, 33, 0.3), rgba(14, 16, 39, 0.4));
+        }
+
+        .play-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .play-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Signup Section Adjustments */
         .signup {
-            background: linear-gradient(135deg, rgba(254, 255, 255, 0.95) 0%, rgba(254, 255, 255, 0.98) 100%);
+            padding: 100px 0;
         }
 
         .signup-container {
             max-width: 600px;
-            margin-left: 50%;
-            transform: translateX(-50px);
+            margin-left: 60%; /* Shift content to the right (60%) */
+            transform: translateX(-30%); /* Adjust for centering */
         }
 
         .signup-subtitle {
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--dark);
+            margin-bottom: 55px;
+            font-size: 18px;
         }
 
         .signup-form {
             background: var(--white);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            padding: 55px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .form-group {
@@ -436,19 +509,19 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 500;
         }
 
         .form-control {
             width: 100%;
-            padding: 15px 20px;
+            padding: 14px;
             border: 1px solid #ddd;
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: var(--font-body);
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
+            text-align: left;
         }
 
         .form-control:focus {
@@ -464,7 +537,7 @@
         .select-wrapper::after {
             content: "▼";
             position: absolute;
-            right: 20px;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
             pointer-events: none;
@@ -473,110 +546,107 @@
 
         .signup-btn {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             font-size: 18px;
             margin-top: 10px;
             background: linear-gradient(to right, #f47c00, #f37221);
             border: none;
-            font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .signup-btn:hover {
             background: linear-gradient(to right, #e06d00, #e3681e);
         }
 
-        /* Contact Section */
+        /* Contact Section Adjustments */
         .contact {
-            background: var(--light-bg);
+            padding: 100px 0;
         }
 
         .contact-container {
-            max-width: 600px;
-            margin-left: 50%;
-            transform: translateX(-50px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: 60%; /* Shift content to the right (60%) */
+            width: 100%;
         }
 
         .contact-title {
-            font-size: 2.8rem;
+            font-size: 48px;
             color: var(--primary);
+            text-align: right;
             line-height: 1.3;
-            margin-bottom: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            width: 100%;
         }
 
         .contact-subtitle {
-            font-size: 1.8rem;
+            font-size: 24px;
             color: #f35000;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            text-align: right;
+            width: 100%;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            align-items: flex-end;
+            gap: 20px;
             margin-bottom: 50px;
+            width: 100%;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            font-size: 1.2rem;
-            gap: 15px;
+            font-size: 18px;
+            gap: 10px;
+            direction: rtl;
             background: var(--white);
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-item i {
-            width: 50px;
-            height: 50px;
-            background: var(--light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: left;
+            width: 100%;
+            max-width: 400px;
+            justify-content: flex-end;
         }
 
         .social-icons {
             display: flex;
             gap: 20px;
+            justify-content: flex-end;
+            width: 100%;
         }
 
         .social-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--light);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--secondary);
-            font-size: 24px;
+            font-size: 20px;
             transition: all 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
 
         .social-icon:hover {
             background: var(--secondary);
             color: var(--white);
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         /* Footer */
         footer {
             background: var(--primary);
             color: var(--white);
-            padding: 70px 0 30px;
+            padding: 60px 0 30px;
         }
 
         .footer-container {
@@ -593,7 +663,7 @@
         }
 
         .footer-title {
-            font-size: 1.4rem;
+            font-size: 20px;
             margin-bottom: 25px;
             color: var(--light);
         }
@@ -603,7 +673,7 @@
         }
 
         .footer-links li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
@@ -626,16 +696,12 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-content,
-            .signup-container,
-            .contact-container {
-                margin-left: 0;
-                transform: none;
-                max-width: 100%;
+            .hero-title {
+                font-size: 48px;
             }
             
-            .hero-title {
-                font-size: 2.8rem;
+            .about-content {
+                padding-left: 15%;
             }
         }
 
@@ -653,7 +719,7 @@
                 flex-direction: column;
                 align-items: center;
                 padding: 20px 0;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
                 transform: translateY(-150%);
                 transition: transform 0.4s ease;
                 margin-right: 0;
@@ -668,50 +734,98 @@
             }
             
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 40px;
+                max-width: 100%;
             }
             
             .hero-buttons {
                 flex-direction: column;
             }
             
-            .section-title {
-                font-size: 2.2rem;
+            .about-content {
+                padding-left: 0;
+                align-items: center;
+            }
+            
+            .about-text, .reason-title {
+                text-align: center;
+            }
+            
+            .goals {
+                justify-content: center;
+            }
+            
+            .goal-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .goal-icon {
+                margin: 0 auto 15px;
             }
             
             .contact-title {
-                font-size: 2.2rem;
+                font-size: 36px;
             }
             
-            .contact-subtitle {
-                font-size: 1.4rem;
+            .signup-container {
+                margin: 0 auto;
+                margin-left: 0;
+                transform: none;
+                width: 100%;
             }
             
-            .signup-form {
-                padding: 30px;
+            .signup-subtitle {
+                text-align: center;
             }
             
-            .service-img {
-                height: 180px;
+            .form-group {
+                text-align: left;
+            }
+
+            /* Responsive adjustments for sections */
+            .hero, .about, .services, .courses, .signup, .contact {
+                min-height: auto;
+                padding: 60px 0;
             }
             
-            .footer-container {
-                flex-direction: column;
-                gap: 30px;
+            .contact-container {
+                margin-left: 0;
+                align-items: center;
+            }
+            
+            .contact-title, .contact-subtitle {
+                text-align: center;
+            }
+            
+            .contact-info {
+                align-items: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
             }
         }
 
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.4rem;
+                font-size: 32px;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 36px;
+            }
+            
+            .contact-title {
+                font-size: 28px;
+            }
+            
+            .contact-subtitle {
+                font-size: 20px;
             }
             
             .signup-form {
@@ -719,13 +833,7 @@
             }
             
             .service-img {
-                height: 160px;
-            }
-            
-            .social-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
+                height: 150px;
             }
         }
     </style>
@@ -735,7 +843,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <div style="width: 150px; height: 50px; background: #0e1027; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px;">TEACHER NARJIS</div>
+                <img src="logo header.png" alt="Teacher Narjis Logo">
             </div>
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
@@ -756,57 +864,51 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="section hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">COURS<br>D'ANGLAIS</h1>
-                <p class="hero-subtitle">En ligne et en direct</p>
-                <p class="hero-subheadline">🛈 En petits groupes ou cours particuliers.</p> 
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">NOS COURS</a>
-                    <a href="#signup" class="btn btn-secondary">S'INSCRIRE</a>
-                </div>
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title animated-shadow">COURS<br>D'ANGLAIS</h1>
+            <p class="hero-subtitle animated-shadow">En ligne et en direct</p>
+            <p class="hero-subheadline animated-shadow">🛈 En petits groupes ou cours particuliers.</p> 
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">NOS COURS</a>
+                <a href="#signup" class="btn btn-secondary">S'INSCRIRE</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <div class="section-content">
-                <h2 class="section-title">À propos de Teacher Narjis</h2>
-                <div class="about-content">
-                    <p class="about-text">Fondé par Narjis, une Marocaine ayant elle-même maîtrisé l’anglais, Teacher Narjis Courses permet aux Marocains ambitieux d’apprendre un anglais pratique et concret. Nous nous concentrons sur le déblocage d’opportunités, le renforcement de la confiance en soi et la création de liens culturels authentiques.</p>
-                    
-                    <h3 class="reason-title">NOTRE RAISON D'ÊTRE :</h3>
-                    
-                    <div class="goals">
-                        <div class="goal-item">
-                            <div class="goal-icon">
-                                🇲🇦
-                            </div>
-                            <div class="goal-content">
-                                <h3 class="goal-title">Donner vie aux ambitions mondiales du Maroc</h3>
-                                <p>Nous dotons étudiants, professionnels et voyageurs des compétences opérationnelles en anglais indispensables pour réussir à l'international.</p>
-                            </div>
+    <section id="about" class="about">
+        <div class="container section-content">
+            <h2 class="section-title animated-shadow">À propos de Teacher Narjis</h2>
+            <div class="about-content">
+                <p class="about-text">Fondé par Narjis, une Marocaine ayant elle-même maîtrisé l’anglais, Teacher Narjis Courses permet aux Marocains ambitieux d’apprendre un anglais pratique et concret. Nous nous concentrons sur le déblocage d’opportunités, le renforcement de la confiance en soi et la création de liens culturels authentiques. Notre approche unique combine des méthodes pédagogiques éprouvées avec une profonde empathie culturelle, guidant les élèves à communiquer avec aisance tout en étant fiers de leur identité marocaine – que ce soit pour les examens, le travail ou la vie quotidienne.</p>
+                <h3 class="reason-title animated-shadow">NOTRE RAISON D'ÊTRE :</h3>
+                <div class="goals">
+                    <div class="goal-item">
+                        <div class="goal-icon">
+                            🇲🇦
                         </div>
-                        <div class="goal-item">
-                            <div class="goal-icon">
-                                💬
-                            </div>
-                            <div class="goal-content">
-                                <h3 class="goal-title">Forger une confiance linguistique authentique</h3>
-                                <p>Notre environnement bienveillant et culturellement éclairé vous aide à surmonter les obstacles de prononciation et l'anxiété liée à l'accent.</p>
-                            </div>
+                        <div class="goal-content">
+                            <h3 class="goal-title">Donner vie aux ambitions mondiales du Maroc</h3>
+                            <p>Nous dotons étudiants, professionnels et voyageurs des compétences opérationnelles en anglais indispensables pour réussir à l'international : études à l'étranger, emploi de rêve, excellence dans le tourisme ou échanges en ligne assurés. Votre réussite prime sur la grammaire théorique.</p>
                         </div>
-                        <div class="goal-item">
-                            <div class="goal-icon">
-                                🌐
-                            </div>
-                            <div class="goal-content">
-                                <h3 class="goal-title">L'excellence anglaise accessible dans tout le Maroc</h3>
-                                <p>Grâce à nos cours en ligne flexibles, nous offrons une formation personnalisée, concrète et financièrement accessible dans chaque région du Maroc.</p>
-                            </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">
+                            💬
+                        </div>
+                        <div class="goal-content">
+                            <h3 class="goal-title">Forger une confiance linguistique authentique</h3>
+                            <p>Apprendre l'anglais dans un contexte multilingue (arabe, français, darija) comporte des défis uniques. Notre environnement bienveillant et culturellement éclairé vous aide à surmonter : les obstacles de prononciation, l'anxiété liée à l'accent, les écarts culturels. Ici, les erreurs deviennent des étapes naturelles – et votre assurance, votre atout décisif.</p>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">
+                            🌐
+                        </div>
+                        <div class="goal-content">
+                            <h3 class="goal-title">L'excellence anglaise accessible dans tout le Maroc</h3>
+                            <p>La qualité de l'apprentissage ne devrait pas dépendre de votre localisation. Grâce à nos cours en ligne flexibles, nous offrons une formation : personnalisée, concrète, financièrement accessible dans chaque région du Maroc, des grandes villes (Casablanca, Rabat) aux villages les plus isolés. Votre réalité. Votre rythme. Votre succès.</p>
                         </div>
                     </div>
                 </div>
@@ -815,97 +917,121 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section services">
-        <div class="container">
-            <div class="section-content">
-                <h2 class="section-title">Services et tarifs</h2>
-                <p class="services-subtitle">Choisissez le plan parfait pour atteindre vos objectifs en anglais.</p>
+    <section id="services" class="services">
+        <div class="container section-content">
+            <h2 class="section-title animated-shadow">Services et tarifs</h2>
+            <p class="services-subtitle animated-shadow">Choisissez le plan parfait pour atteindre vos objectifs en anglais.</p>
+            <div class="service-cards">
+                <!-- Kindy Courses -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Kindy Courses.jpg');">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title animated-shadow">Kindy Courses</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 4-5 enfants par classe
+                        </div>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure par mois
+                        </div>
+                        <p class="service-price animated-shadow">250 DH</p>
+                    </div>
+                </div>
                 
-                <div class="service-cards">
-                    <div class="service-card">
-                        <div class="service-img">
-                            <i class="fas fa-child"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3 class="service-title">Kindy Courses</h3>
-                            <div class="service-details">
-                                <i class="fas fa-users"></i> 4-5 enfants par classe
-                            </div>
-                            <div class="service-details">
-                                <i class="fas fa-clock"></i> 8 séances d'une heure par mois
-                            </div>
-                            <p class="service-price">250 DH</p>
-                        </div>
+                <!-- One to one kids -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('One to one Kids.png');">
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3 class="service-title">One to one kids</h3>
-                            <p>Programme personnalisé en individuel, adapté au besoins de vos petits. (+9 ans)</p>
-                            <p class="service-price">1500 DH</p>
-                        </div>
+                    <div class="service-content">
+                        <h3 class="service-title animated-shadow">One to one kids</h3>
+                        <p>Programme personnalisé en individuel, adapté au besoins de vos petits. (+9 ans)</p>
+                        <p class="service-price animated-shadow">1500 DH</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3 class="service-title">Teens Courses</h3>
-                            <div class="service-details">
-                                <i class="fas fa-users"></i> 5 élèves par classe
-                            </div>
-                            <div class="service-details">
-                                <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
-                            </div>
-                            <p class="service-price">300 DH</p>
-                        </div>
+                </div>
+                
+                <!-- Teens Courses -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Teens Courses.jpg');">
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img">
-                            <i class="fas fa-user-tie"></i>
+                    <div class="service-content">
+                        <h3 class="service-title animated-shadow">Teens Courses</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 5 élèves par classe
                         </div>
-                        <div class="service-content">
-                            <h3 class="service-title">Adults courses</h3>
-                            <div class="service-details">
-                                <i class="fas fa-users"></i> 5-6 personnes par classe
-                            </div>
-                            <div class="service-details">
-                                <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
-                            </div>
-                            <p class="service-price">300 DH</p>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
                         </div>
+                        <p class="service-price animated-shadow">300 DH</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3 class="service-title">One to one Adultes</h3>
-                            <p>Programme personnalisé en individuel, adapté a vos besoins.</p>
-                            <p class="service-price">1800 DH</p>
-                        </div>
+                </div>
+                
+                <!-- Adults courses -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Adultes Courses.jpg');">
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-img">
-                            <i class="fas fa-comments"></i>
+                    <div class="service-content">
+                        <h3 class="service-title animated-shadow">Adults courses</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 5-6 personnes par classe
                         </div>
-                        <div class="service-content">
-                            <h3 class="service-title">Communication</h3>
-                            <div class="service-details">
-                                <i class="fas fa-users"></i> 4 personnes par classe
-                            </div>
-                            <div class="service-details">
-                                <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
-                            </div>
-                            <p class="service-price">350 DH</p>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
                         </div>
+                        <p class="service-price animated-shadow">300 DH</p>
+                    </div>
+                </div>
+                
+                <!-- One to one Adultes -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Business courses.png');">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title animated-shadow">One to one Adultes</h3>
+                        <p>Programme personnalisé en individuel, adapté a vos besoins.</p>
+                        <p class="service-price animated-shadow">1800 DH</p>
+                    </div>
+                </div>
+                
+                <!-- Communication -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Communication.jpg');">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title animated-shadow">Communication</h3>
+                        <div class="service-details">
+                            <i class="fas fa-users"></i> 4 personnes par classe
+                        </div>
+                        <div class="service-details">
+                            <i class="fas fa-clock"></i> 8 séances d'une heure et demi par mois
+                        </div>
+                        <p class="service-price animated-shadow">350 DH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container section-content">
+            <h2 class="section-title animated-shadow">Exemples de cours</h2>
+            <div class="courses-container">
+                <div class="course-video">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="course-video">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="course-video">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
                     </div>
                 </div>
             </div>
@@ -913,12 +1039,11 @@
     </section>
 
     <!-- Signup Section -->
-    <section id="signup" class="section signup">
-        <div class="container">
+    <section id="signup" class="signup">
+        <div class="container section-content">
+            <h2 class="section-title animated-shadow">S'INSCRIRE</h2>
+            <p class="signup-subtitle animated-shadow">En quelques étapes simples, rejoignez une communauté où votre identité est célébrée, vos objectifs sont prioritaires et votre parcours en anglais est conçu spécialement pour vous.</p>
             <div class="signup-container">
-                <h2 class="section-title">S'INSCRIRE</h2>
-                <p class="signup-subtitle">En quelques étapes simples, rejoignez une communauté où votre identité est célébrée, vos objectifs sont prioritaires et votre parcours en anglais est conçu spécialement pour vous.</p>
-                
                 <form class="signup-form" id="signup-form">
                     <div class="form-group">
                         <label for="fullname">Nom Complet</label>
@@ -953,12 +1078,11 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
+    <section id="contact" class="contact">
+        <div class="container section-content">
             <div class="contact-container">
-                <h2 class="contact-title">Vous avez<br>des questions?</h2>
-                <p class="contact-subtitle">Tendez la main.</p>
-                
+                <h2 class="contact-title animated-shadow">Vous avez<br>des questions?</h2>
+                <p class="contact-subtitle animated-shadow">Tendez la main.</p>
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
@@ -969,7 +1093,6 @@
                         <span>contact@teachernarjis.com</span>
                     </div>
                 </div>
-                
                 <div class="social-icons">
                     <a href="https://www.youtube.com/@TeacherNarjis" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.tiktok.com/@teacher.narjis" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
@@ -1051,8 +1174,9 @@
             });
         });
         
-        // Form Submission
+        // Form Submission to Google Sheets
         const signupForm = document.getElementById('signup-form');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwVd4iSxJ8J6qFqj0N_9Cj8a9Jz5q8v4c6q9c4g4HqJ5fUj5hV1/exec'; // Replace with your actual Google Script URL
         
         signupForm.addEventListener('submit', e => {
             e.preventDefault();
@@ -1070,8 +1194,41 @@
                 }
             });
             
-            // Simulate form submission
-            setTimeout(() => {
+            // Form validation
+            const fullname = document.getElementById('fullname').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const courseType = document.getElementById('course-type').value;
+            
+            if(!fullname || !phone || !email || !courseType) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: 'Veuillez remplir tous les champs du formulaire',
+                    confirmButtonColor: '#f47c00'
+                });
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Create form data
+            const formData = new FormData();
+            formData.append('Nom Complet', fullname);
+            formData.append('Téléphone', phone);
+            formData.append('Email', email);
+            formData.append('Type de Cours', courseType);
+            formData.append('Date', new Date().toLocaleString());
+            
+            // Submit to Google Sheets
+            fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Erreur de réseau');
+                }
+            })
+            .then(data => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Inscription réussie !',
@@ -1079,8 +1236,19 @@
                     confirmButtonColor: '#f47c00'
                 });
                 signupForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
+                    confirmButtonColor: '#f47c00'
+                });
+            })
+            .finally(() => {
                 submitBtn.disabled = false;
-            }, 1500);
+            });
         });
         
         // Language Toggle Functionality
@@ -1090,6 +1258,19 @@
                 text: 'Passage à la version arabe du site',
                 icon: 'info',
                 confirmButtonColor: '#f47c00'
+            });
+        });
+        
+        // Video Play Functionality
+        document.querySelectorAll('.play-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                Swal.fire({
+                    title: 'Lecture vidéo',
+                    html: '<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/76979871?h=8272103f6e" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>',
+                    showConfirmButton: false,
+                    width: 800,
+                    padding: 0
+                });
             });
         });
     </script>
